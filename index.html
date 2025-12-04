@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KyivBot Documentation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="logo">KYIV_BOT<span class="blink">_</span></div>
+            <nav>
+                <a href="#features">Функціонал</a>
+                <a href="#commands">Команди</a>
+                <a href="#tech">Стек</a>
+                <a href="#install">Install</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Telegram Bot <br> <span class="accent">Kyiv City Assistant</span></h1>
+            <p>Інтелектуальний асистент для жителів Києва. Моніторинг безпеки, новин, інфраструктури та дозвілля в режимі реального часу.</p>
+            <div class="hero-buttons">
+                <a href="#commands" class="btn primary">Команди</a>
+                <a href="https://t.me/my_kyiv_bot" target="_blank" class="btn secondary">Відкрити Бота</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2><span class="hash">#</span> МОДУЛІ СИСТЕМИ</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon"><i class="fas fa-tree"></i></div>
+                    <h3>Park Finder</h3>
+                    <p>Інтелектуальний пошук парків та зон відпочинку. Аналізує геолокацію, відгуки та фотографії для підбору найкращих місць.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Gastro Guide</h3>
+                    <p>Рандомайзер закладів харчування з фільтрацією по рейтингу. Надає актуальні фото, ціни та графік роботи.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-newspaper"></i></div>
+                    <h3>News Core</h3>
+                    <p>Агрегатор новин з 10+ перевірених джерел. AI-фільтрація спаму та дублікатів для надання лише важливого контенту.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Energy Monitor</h3>
+                    <p>Парсинг графіків відключень ДТЕК та Yasno. Автоматичне розпізнавання тексту з зображень графіків.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="commands" class="commands-section">
+            <h2><span class="hash">#</span> СПИСОК КОМАНД</h2>
+            
+            <div class="cmd-list">
+                <!-- Command 1: Start -->
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">/start</span>
+                        <span class="cmd-tag">System</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Ініціалізація бота. Реєструє користувача в базі даних <code>usersinfo.json</code> та відкриває головне навігаційне меню.
+                    </div>
+                </div>
+
+                <!-- Command 2: News -->
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">📰 КиНовини</span>
+                        <span class="cmd-tag">News</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Запускає алгоритм збору новин:
+                        <ol>
+                            <li>Підключається до Telegram API через Telethon.</li>
+                            <li>Сканує останні повідомлення з 10 каналів Києва.</li>
+                            <li>Фільтрує рекламу та спам за ключовими словами.</li>
+                            <li>Обирає 3 випадкові важливі новини, яких ви ще не бачили.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Command 3: Alarm -->
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🔔 Тривога</span>
+                        <span class="cmd-tag">Security</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Звертається до <strong>Siren API</strong> в реальному часі.
+                        <ul>
+                            <li>Показує статус повітряної тривоги у м. Київ.</li>
+                            <li>Відображає тип загрози (Ракети/БПЛА/Артилерія).</li>
+                            <li>Надає кнопку з посиланням на інтерактивну карту.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <!-- Command 4: Weather -->
+                 <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🌧️ Погода в Києві</span>
+                        <span class="cmd-tag">Utility</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Запит до <strong>WeatherAPI</strong> для отримання метеоданих:
+                        <ul>
+                            <li>Температура (фактична та "відчувається як").</li>
+                            <li>Вологість, швидкість вітру та опис погодних умов.</li>
+                            <li>Автоматичний підбір емодзі під поточний стан погоди.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Command 5: Electricity -->
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🚨 Графіки Відключень</span>
+                        <span class="cmd-tag">Utility</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Моніторинг офіційного каналу ДТЕК:
+                        <ul>
+                            <li>Знаходить останнє повідомлення з графіком.</li>
+                            <li>Завантажує актуальне фото розкладу.</li>
+                            <li>Очищає текст від маркетингового сміття, залишаючи лише суть.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Command 6: Restaurant -->
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🍽 Рандомний ресторан</span>
+                        <span class="cmd-tag">Leisure</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Обирає випадковий заклад з локальної бази <code>restaurants.json</code>:
+                        <ul>
+                            <li>Генерує картку закладу (Назва, Рейтинг, Ціни).</li>
+                            <li>Підтягує до 10 фотографій інтер'єру/їжі.</li>
+                            <li>Показує точну адресу та категорії кухні.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Command 7: Park -->
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🌳 Рандомний парк</span>
+                        <span class="cmd-tag">Leisure</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Пошук зелених зон з бази <code>parks.json</code>:
+                        <ul>
+                            <li>Фільтрація "фейкових" парків (парковки, магазини).</li>
+                            <li>Відображення статусу (Відчинено/Зачинено).</li>
+                            <li>Надсилання фото місцевості для оцінки атмосфери.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tech" class="tech-stack">
+            <h2><span class="hash">#</span> ТЕХНІЧНИЙ СТЕК</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <span class="label">CORE</span>
+                    Python 3.12 (AsyncIO)
+                </div>
+                <div class="tech-item">
+                    <span class="label">FRAMEWORK</span>
+                    Aiogram 3.x
+                </div>
+                <div class="tech-item">
+                    <span class="label">CLIENT</span>
+                    Telethon (MTProto)
+                </div>
+                <div class="tech-item">
+                    <span class="label">API</span>
+                    Google Maps, WeatherAPI, Siren API
+                </div>
+            </div>
+        </section>
+
+        <section id="install" class="installation">
+            <h2><span class="hash">#</span> ЯК КОРИСТУВАТИСЬ</h2>
+            <div class="step">
+                <h3>01. Знайдіть бота в Telegram</h3>
+                <p style="color: #8892b0; margin-bottom: 15px;">Відкрийте Telegram і введіть у пошук юзернейм бота або перейдіть за прямим посиланням:</p>
+                <div class="code-box">@my_kyiv_bot</div>
+                <div style="margin-top: 15px;">
+                    <a href="https://t.me/my_kyiv_bot" target="_blank" class="btn primary">Перейти до бота</a>
+                </div>
+            </div>
+            <div class="step">
+                <h3>02. Запустіть бота</h3>
+                <p style="color: #8892b0;">Натисніть кнопку <strong>START</strong> внизу екрану. Бот відкриє головне меню з доступними функціями.</p>
+            </div>
+            <div class="step">
+                <h3>03. Оберіть потрібну функцію</h3>
+                <p style="color: #8892b0;">Використовуйте кнопки меню для отримання інформації. Наприклад, натисніть <strong>"📰 КиНовини"</strong>, щоб отримати дайджест подій.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Developed by Yegor Khoklov // 2025</p>
+        </footer>
+    </div>
+
