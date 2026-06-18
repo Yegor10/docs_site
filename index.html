@@ -18,7 +18,7 @@
                 <a href="#features">Функціонал</a>
                 <a href="#commands">Команди</a>
                 <a href="#tech">Стек</a>
-                <a href="#install">Install</a>
+                <a href="#install">Використання</a>
             </nav>
         </header>
 
@@ -35,229 +35,271 @@
             <h2><span class="hash">#</span> МОДУЛІ СИСТЕМИ</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="icon"><i class="fas fa-tree"></i></div>
-                    <h3>Park Finder</h3>
-                    <p>Інтелектуальний пошук парків та зон відпочинку. Аналізує геолокацію, відгуки та фотографії для підбору найкращих місць.</p>
-                </div>
-                <div class="card">
-                    <div class="icon"><i class="fas fa-utensils"></i></div>
-                    <h3>Gastro Guide</h3>
-                    <p>Рандомайзер закладів харчування з фільтрацією по рейтингу. Надає актуальні фото, ціни та графік роботи.</p>
-                </div>
-                <div class="card">
                     <div class="icon"><i class="fas fa-newspaper"></i></div>
                     <h3>News Core</h3>
-                    <p>Агрегатор новин з 10+ перевірених джерел. AI-фільтрація спаму та дублікатів для надання лише важливого контенту.</p>
+                    <p>Агрегатор новин з 10 київських Telegram-каналів через Telethon. Фільтрація за ключовими словами, чорний список тем і 3 випадкові свіжі публікації з фото.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Alarm Monitor</h3>
+                    <p>Статус повітряної тривоги в Києві через Siren API v3. Відображення типів загроз і посилання на інтерактивну карту.</p>
                 </div>
                 <div class="card">
                     <div class="icon"><i class="fas fa-bolt"></i></div>
                     <h3>Energy Monitor</h3>
-                    <p>Парсинг графіків відключень ДТЕК та Yasno. Автоматичне розпізнавання тексту з зображень графіків.</p>
+                    <p>Парсинг офіційного каналу ДТЕК <code>kiev_svet</code> через Telethon. Актуальні фото графіків відключень і очищений текст.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-cloud-sun"></i></div>
+                    <h3>Weather</h3>
+                    <p>Поточна погода в Києві через WeatherAPI: температура, вологість, вітер та автоматичний підбір емодзі за умовами.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-wind"></i></div>
+                    <h3>Air Quality</h3>
+                    <p>Індекс якості повітря (AQI) за координатами центру Києва через World Air Quality Index: PM2.5, PM10, NO₂, O₃.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Gastro Guide</h3>
+                    <p>Випадковий заклад із локальної бази <code>restaurants_updated.json</code>. Рейтинг, ціни, до 10 фото та геолокація на карті.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-tree"></i></div>
+                    <h3>Park Finder</h3>
+                    <p>Підбір місця для прогулянки з <code>parks.json</code>. Фільтрація за рейтингом, статус відкриття та фото локації.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-subway"></i></div>
+                    <h3>Metro Router</h3>
+                    <p>Прокладання маршруту між станціями київського метро (червона, синя, зелена гілки) з урахуванням пересадок.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-film"></i></div>
+                    <h3>Cinema</h3>
+                    <p>Розклад сеансів 8 кінотеатрів Multiplex у Києві. Пошук найближчого за геолокацією або ручний вибір, посилання на купівлю квитків.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-masks-theater"></i></div>
+                    <h3>Theater</h3>
+                    <p>Афіша театральних вистав Києва з numotamo.com. Фільтр за 14 жанрами, сортування за датою, посилання на квитки.</p>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-gear"></i></div>
+                    <h3>Notifications</h3>
+                    <p>Персональні налаштування сповіщень про тривогу та графіки відключень. Дані зберігаються в <code>usersinfo.json</code>.</p>
                 </div>
             </div>
         </section>
 
         <section id="commands" class="commands-section">
             <h2><span class="hash">#</span> СПИСОК КОМАНД</h2>
-            
+
             <div class="cmd-list">
-                <!-- Command 1: Start -->
                 <div class="cmd-item">
                     <div class="cmd-header">
                         <span class="cmd-trigger">/start</span>
                         <span class="cmd-tag">System</span>
                     </div>
                     <div class="cmd-desc">
-                        Ініціалізація бота. Реєструє користувача в базі даних <code>usersinfo.json</code> та відкриває головне навігаційне меню.
+                        Ініціалізація бота. Реєструє користувача в <code>data/usersinfo.json</code> та відкриває головне меню з кнопками.
                     </div>
                 </div>
 
-                <!-- Command 2: News -->
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">📰 КиНовини</span>
+                        <span class="cmd-trigger">📰 Київські новини</span>
                         <span class="cmd-tag">News</span>
                     </div>
                     <div class="cmd-desc">
-                        Запускає алгоритм збору новин:
+                        Збір новин про Київ за останні 2 дні:
                         <ol>
-                            <li>Підключається до Telegram API через Telethon.</li>
-                            <li>Сканує останні повідомлення з 10 каналів Києва.</li>
-                            <li>Фільтрує рекламу та спам за ключовими словами.</li>
-                            <li>Обирає 3 випадкові важливі новини, яких ви ще не бачили.</li>
+                            <li>Підключення до Telegram API через Telethon.</li>
+                            <li>Сканування 10 каналів: <code>@kyivvillage</code>, <code>@K_L_I_V_E</code>, <code>@kyiv_live</code> та інші.</li>
+                            <li>Фільтрація за ключовими словами та чорним списком (тривога, відключення, реклама).</li>
+                            <li>3 випадкові новини з фото, яких ви ще не бачили.</li>
                         </ol>
                     </div>
                 </div>
 
-                <!-- Command 3: Alarm -->
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🔔 Тривога</span>
+                        <span class="cmd-trigger">🚨 Тривога</span>
                         <span class="cmd-tag">Security</span>
                     </div>
                     <div class="cmd-desc">
-                        Звертається до <strong>Siren API</strong> в реальному часі.
+                        Запит до <strong>Siren API v3</strong> для регіону Київ (ID 31):
                         <ul>
-                            <li>Показує статус повітряної тривоги у м. Київ.</li>
-                            <li>Відображає тип загрози (Ракети/БПЛА/Артилерія).</li>
-                            <li>Надає кнопку з посиланням на інтерактивну карту.</li>
+                            <li>Статус тривоги: спокійно або активна загроза.</li>
+                            <li>Типи: повітряна, ракетна, артилерійська, хімічна, радіаційна, вуличні бої.</li>
+                            <li>Час останнього оновлення та кнопка «Карта тривог».</li>
                         </ul>
                     </div>
                 </div>
 
-                 <!-- Command 4: Weather -->
-                 <div class="cmd-item">
+                <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🌧️ Погода в Києві</span>
+                        <span class="cmd-trigger">☔ Погода в Києві</span>
                         <span class="cmd-tag">Utility</span>
                     </div>
                     <div class="cmd-desc">
-                        Запит до <strong>WeatherAPI</strong> для отримання метеоданих:
+                        Запит до <strong>WeatherAPI</strong>:
                         <ul>
-                            <li>Температура (фактична та "відчувається як").</li>
-                            <li>Вологість, швидкість вітру та опис погодних умов.</li>
-                            <li>Автоматичний підбір емодзі під поточний стан погоди.</li>
+                            <li>Температура (фактична та «відчувається як»).</li>
+                            <li>Вологість, швидкість вітру, опис умов українською.</li>
+                            <li>Емодзі за кодом погоди (сонце, дощ, сніг, хмари).</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Command 5: Electricity -->
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🚨 Графіки Відключень</span>
+                        <span class="cmd-trigger">⚡ Графіки відключень</span>
                         <span class="cmd-tag">Utility</span>
                     </div>
                     <div class="cmd-desc">
-                        Моніторинг офіційного каналу ДТЕК:
+                        Моніторинг каналу ДТЕК <code>kiev_svet</code> через Telethon:
                         <ul>
-                            <li>Знаходить останнє повідомлення з графіком.</li>
-                            <li>Завантажує актуальне фото розкладу.</li>
-                            <li>Очищає текст від маркетингового сміття, залишаючи лише суть.</li>
+                            <li>Пошук останнього повідомлення з фразою «Київ: оновлений графік відключень на сьогодні».</li>
+                            <li>Надсилання фото графіка (до 2 зображень) та очищеного тексту.</li>
+                            <li>Посилання на перевірку черги за адресою на сайті ДТЕК.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Command 6: Restaurant -->
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🍽 Рандомний ресторан</span>
+                        <span class="cmd-trigger">🍽️ Випадковий заклад</span>
                         <span class="cmd-tag">Leisure</span>
                     </div>
                     <div class="cmd-desc">
-                        Обирає випадковий заклад з локальної бази <code>restaurants.json</code>:
+                        Випадковий ресторан із <code>data/restaurants_updated.json</code>:
                         <ul>
-                            <li>Генерує картку закладу (Назва, Рейтинг, Ціни).</li>
-                            <li>Підтягує до 10 фотографій інтер'єру/їжі.</li>
-                            <li>Показує точну адресу та категорії кухні.</li>
+                            <li>Картка: назва, адреса, рейтинг, кількість відгуків, ціновий рівень.</li>
+                            <li>До 10 локальних фото з папки <code>restaurant_photos</code>.</li>
+                            <li>Геолокація закладу на карті Telegram.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Command 7: Park -->
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🌳 Рандомний парк</span>
+                        <span class="cmd-trigger">🌿 Місце для прогулянки</span>
                         <span class="cmd-tag">Leisure</span>
                     </div>
                     <div class="cmd-desc">
-                        Пошук зелених зон з бази <code>parks.json</code>:
+                        Випадковий парк із <code>data/parks.json</code>:
                         <ul>
-                            <li>Фільтрація "фейкових" парків (парковки, магазини).</li>
-                            <li>Відображення статусу (Відчинено/Зачинено).</li>
-                            <li>Надсилання фото місцевості для оцінки атмосфери.</li>
+                            <li>Фільтрація закладів без рейтингу, відгуків або фото.</li>
+                            <li>Статус відкриття (відчинено / зачинено).</li>
+                            <li>Фото місцевості та геолокація.</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Command 8: Air Quality -->
+
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🏞️Рівень забруднення</span>
+                        <span class="cmd-trigger">💨 Якість повітря</span>
+                        <span class="cmd-tag">Utility</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Дані з <strong>World Air Quality Index</strong> для координат Києва:
+                        <ul>
+                            <li>AQI та текстовий статус (від «Добре» до «Небезпечно»).</li>
+                            <li>Основний забруднювач і час оновлення.</li>
+                            <li>Показники PM2.5, PM10, NO₂, O₃.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🚇 Метро Київ</span>
+                        <span class="cmd-tag">Transport</span>
+                    </div>
+                    <div class="cmd-desc">
+                        Побудова маршруту між двома станціями метро:
+                        <ul>
+                            <li>Вибір лінії та станції відправлення (червона, синя, зелена).</li>
+                            <li>Вибір лінії та станції призначення.</li>
+                            <li>Маршрут BFS-алгоритмом з пересадками (Золоті Ворота ↔ Театральна, Палац спорту ↔ Площа Українських Героїв, Майдан ↔ Хрещатик).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cmd-item">
+                    <div class="cmd-header">
+                        <span class="cmd-trigger">🎬 Кіно сеанси</span>
                         <span class="cmd-tag">Leisure</span>
                     </div>
                     <div class="cmd-desc">
-                        парсинг(збирання інформації) з джерела <code>World Air Quality Index</code>:
+                        Розклад Multiplex у Києві (<code>multiplex.ua</code>):
                         <ul>
-                            <li>Надсилання  інформацію про якість повітря,
-                                 основний забрудник, коли оновлена інформація та показники по хімічним елементам</li>
+                            <li>Надіслати геолокацію — бот знайде найближчий з 8 кінотеатрів.</li>
+                            <li>Або обрати кінотеатр вручну (Lavina IMAX, Respublika Park, Retroville тощо).</li>
+                            <li>Список фільмів на сьогодні → вибір сеансу → посилання на купівлю квитка.</li>
                         </ul>
                     </div>
                 </div>
-                <!-- Command 9: Air Quality -->
-                <div class="cmd-item">
-                    <div class="cmd-header">
-                        <span class="cmd-trigger">🏞️Рівень забруднення</span>
-                        <span class="cmd-tag">Leisure</span>
-                    </div>
-                    <div class="cmd-desc">
-                        парсинг(збирання інформації) з джерела <code>World Air Quality Index</code>:
-                        <ul>
-                            <li>Надсилання  інформацію про якість повітря,
-                                 основний забрудник, коли оновлена інформація та показники по хімічним елементам</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Command 10: Metro -->
-                <div class="cmd-item">
-                    <div class="cmd-header">
-                        <span class="cmd-trigger">🚆Метро Київ</span>
-                        <span class="cmd-tag">Leisure</span>
-                    </div>
-                    <div class="cmd-desc">
-                        Ця функція відповідає за зручне прокладання маршруту з 1 станції метро до іншої, це працює таким чином:
-                        <ul>
-                            <li>Ви вказали червону гілку та 1 станцію метро з якої відправляєтесь: Нивки</li>
-                            <li>Ви вказали синю гілку та 2 станцію метро на яку хочете дібратися: Виставковий центр</li>
-                            <li>Вивід: Щоб дібратись з Арсенальна до Виставковий центр, треба сісти на Арсенальна, доїхати до станції Хрещатик, пересісти на станцію Майдан Незалежності, та поїхати до станції Виставковий центр.</li>
-                        </ul>
-                    </div>
-                </div>
+
                 <div class="cmd-item">
                     <div class="cmd-header">
                         <span class="cmd-trigger">🎭 Театри</span>
                         <span class="cmd-tag">Leisure</span>
                     </div>
                     <div class="cmd-desc">
-                        Ця функція дає нам можливість подивитись сеанси у театрах міста києва, це працює таким чином:
+                        Афіша з <strong>numotamo.com</strong>:
                         <ul>
-                            <li>Ви натиснули на кнопку у інтерфейсі, вам видає список жанрів.</li>
-                            <li>Вивід: Вам видає список жанрів, ви вибрали жанр, вам видає список театрів, ви вибрали театр, вам видає список вистав, ви вибрали виставу, вам видає інформацію про виставу та посилання на купівлю квитків.</li>
+                            <li>Вибір жанру: драма, комедія, мюзикл, балет, опера, премʼєра та інші (14 категорій).</li>
+                            <li>Список найближчих вистав, відсортованих за датою.</li>
+                            <li>Деталі вистави: дата, місце, ціна, посилання на квитки.</li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="cmd-item">
                     <div class="cmd-header">
-                        <span class="cmd-trigger">🎥 Кіно сеанси</span>
-                        <span class="cmd-tag">Leisure</span>
+                        <span class="cmd-trigger">⚙️ Налаштування</span>
+                        <span class="cmd-tag">System</span>
                     </div>
                     <div class="cmd-desc">
-                        Ця функція дає нам можливість подивитись сеанси у кінотеатрах міста києва, це працює таким чином:
+                        Персональні сповіщення:
                         <ul>
-                            <li>Ви натиснули на кнопку у інтерфейсі, вам видає список кінотеатрів. Також можна просто скинути свою гелокацію та програма сама визначить найближчий кінотеатр.</li>
-                            <li>Після вибору вам видає список фільмів, ви вибрали фільм, вам видає інформацію про фільм та посилання на купівлю квитків.</li>
+                            <li>🚨 Сповіщення про тривогу по Києву — увімкнути / вимкнути.</li>
+                            <li>⚡ Сповіщення про графіки відключень — увімкнути / вимкнути.</li>
+                            <li>Налаштування зберігаються для кожного користувача окремо.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tech" class="tech-stack">  
+        <section id="tech" class="tech-stack">
             <h2><span class="hash">#</span> ТЕХНІЧНИЙ СТЕК</h2>
             <div class="tech-grid">
                 <div class="tech-item">
                     <span class="label">CORE</span>
-                    Python 3.12 (AsyncIO)
+                    Python 3.x (asyncio)
                 </div>
                 <div class="tech-item">
                     <span class="label">FRAMEWORK</span>
-                    Aiogram 3.x
+                    Aiogram 3.29
                 </div>
                 <div class="tech-item">
                     <span class="label">CLIENT</span>
-                    Telethon (MTProto)
+                    Telethon 1.44 (MTProto)
                 </div>
                 <div class="tech-item">
-                    <span class="label">API</span>
-                    Google Maps, WeatherAPI, Siren API, Playwridthon, World Air Quality Index, DTEK, Telethon
+                    <span class="label">PARSING</span>
+                    BeautifulSoup4, aiohttp
+                </div>
+                <div class="tech-item">
+                    <span class="label">DATA</span>
+                    JSON (users, parks, restaurants)
+                </div>
+                <div class="tech-item">
+                    <span class="label">APIS</span>
+                    Siren API, WeatherAPI, WAQI, Multiplex, Numotamo, DTEK (Telegram)
                 </div>
             </div>
         </section>
@@ -274,16 +316,28 @@
             </div>
             <div class="step">
                 <h3>02. Запустіть бота</h3>
-                <p style="color: #8892b0;">Натисніть кнопку <strong>START</strong> внизу екрану. Бот відкриє головне меню з доступними функціями.</p>
+                <p style="color: #8892b0;">Натисніть кнопку <strong>START</strong> або надішліть <code>/start</code>. Бот відкриє головне меню з 11 функціями.</p>
             </div>
             <div class="step">
                 <h3>03. Оберіть потрібну функцію</h3>
-                <p style="color: #8892b0;">Використовуйте кнопки меню для отримання інформації. Наприклад, натисніть <strong>"📰 КиНовини"</strong>, щоб отримати дайджест подій.</p>
+                <p style="color: #8892b0;">Використовуйте кнопки меню. Наприклад, натисніть <strong>«📰 Київські новини»</strong> для дайджесту подій або <strong>«⚙️ Налаштування»</strong> для сповіщень.</p>
+            </div>
+            <div class="step">
+                <h3>04. Головне меню</h3>
+                <p style="color: #8892b0; margin-bottom: 10px;">Поточна розкладка кнопок:</p>
+                <div class="code-box" style="line-height: 1.8; white-space: pre-wrap;">📰 Київські новини
+🚨 Тривога · ☔ Погода в Києві
+⚡ Графіки відключень · 🍽️ Випадковий заклад · 🌿 Місце для прогулянки
+💨 Якість повітря · 🚇 Метро Київ · 🎬 Кіно сеанси
+🎭 Театри · ⚙️ Налаштування</div>
             </div>
         </section>
 
         <footer>
-            <p>Developed by Yegor Khoklov // 2025</p>
+            <p>Developed by Yegor Khoklov // 2026</p>
         </footer>
     </div>
 
+    <script src="script.js"></script>
+</body>
+</html>
